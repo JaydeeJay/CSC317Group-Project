@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ratingApp.SettingsPage"
+             Title="SettingsPage">
+    
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop Color="#BD2FFF"
+                          Offset="0.1" />
+            <GradientStop Color="#000000"
+                          Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    
+    
+        <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+            <!-- Profile Picture -->
+            <Label Text="Profile Picture" FontSize="20" />
+            <Image x:Name="ProfileImage" HeightRequest="100" WidthRequest="100" />
+            <Button Text="Change Profile Picture" Clicked="OnChangeProfilePicture" />
+
+            <!-- Theme Selector -->
+            <Label Text="Select Theme" FontSize="20" />
+            <Picker x:Name="ThemePicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Light</x:String>
+                        <x:String>Dark</x:String>
+                        <x:String>Red</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Other Preferences -->
+            <Label Text="Other Settings" FontSize="20" />
+            <Entry x:Name="UserNameEntry" Placeholder="Enter your name" />
+            <Button Text="Save Settings" Clicked="OnSaveSettings" />
+        </StackLayout>
+            
+    </ScrollView>
+</ContentPage>

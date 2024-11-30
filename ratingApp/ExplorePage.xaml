@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ratingApp.ExplorePage"
+             Title="ExplorePage">
+    
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop Color="#BD2FFF"
+                          Offset="0.1" />
+            <GradientStop Color="#000000"
+                          Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <CollectionView ItemsSource="{Binding MediaList}" SelectionMode="None">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Frame Margin="10" Padding="10" BackgroundColor="#FFFFFF" CornerRadius="10">
+                    <StackLayout>
+                        <Image Source="{Binding PosterPath}" HeightRequest="150" Aspect="AspectFill" />
+                        <Label Text="{Binding Title}" FontSize="20" FontAttributes="Bold" />
+                        <Label Text="{Binding Genre}" FontSize="16" TextColor="Gray" />
+                        <Label Text="{Binding Rating, StringFormat='Rating: {0:F1}'}" FontSize="14" />
+                        <Label Text="{Binding Tags, StringFormat='Tags: {0}'}" FontSize="14" />
+                    </StackLayout>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
+</ContentPage>
