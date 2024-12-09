@@ -6,6 +6,9 @@ public partial class SettingsPage : ContentPage
     {
         InitializeComponent();
         LoadSettings(); // Load settings when the page is opened
+
+        // Handle theme changes dynamically
+        ThemePicker.SelectedIndexChanged += OnThemeSelected;
     }
 
     private async void OnChangeProfilePicture(object sender, EventArgs e)
@@ -54,9 +57,53 @@ public partial class SettingsPage : ContentPage
         // Load theme
         string appTheme = Preferences.Get("AppTheme", "Light");
         ThemePicker.SelectedItem = appTheme;
+        ApplyTheme(appTheme); // Apply the saved theme
 
         // Load user name
         string userName = Preferences.Get("UserName", "");
         UserNameEntry.Text = userName;
     }
+
+    private void OnThemeSelected(object sender, EventArgs e)
+    {
+        // Update gradient background based on the selected theme
+        string selectedTheme = ThemePicker.SelectedItem as string;
+        ApplyTheme(selectedTheme);
+    }
+
+    private void ApplyTheme(string theme)
+    {
+        switch (theme)
+        {
+            case "Light":
+                SetGradientBackground("#BD2FFF", "#000000");
+                break;
+
+            case "Dark":
+                SetGradientBackground("#000000", "#2E2E2E");
+                break;
+
+            case "Red":
+                SetGradientBackground("#FF0000", "#000000");
+                break;
+
+            default:
+                SetGradientBackground("#BD2FFF", "#000000"); // Default gradient
+                break;
+        }
+    }
+
+    private void SetGradientBackground(string startColor, string endColor)
+    {
+        this.Background = new LinearGradientBrush
+        {
+            EndPoint = new Point(0, 1),
+            GradientStops = new GradientStopCollection
+            {
+                new GradientStop { Color = Color.FromArgb(startColor), Offset = 0.1f },
+                new GradientStop { Color = Color.FromArgb(endColor), Offset = 1.0f }
+            }
+        };
+    }
 }
+

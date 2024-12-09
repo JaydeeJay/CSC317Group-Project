@@ -7,7 +7,13 @@ using System.Text.Json;
 
 public static class MediaDatabase
 {
-    private static string FilePath => Path.Combine(Directory.GetCurrentDirectory(), "C:\\Users\\dick1\\source\\repos\\ratingApp\\ratingApp\\Media\\", "media.json");
+    // For debugging purposes
+    //private static string FilePath => Path.Combine(Directory.GetCurrentDirectory(), "C:\\Users\\dick1\\source\\repos\\ratingApp\\ratingApp\\Media\\", "media.json");
+    
+    // For user sharing purposes
+    private static string FilePath => Path.Combine(FileSystem.Current.AppDataDirectory, "media.json");
+
+
 
     private static List<Media> mediaList;
 

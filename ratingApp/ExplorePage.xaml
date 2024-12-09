@@ -16,13 +16,22 @@
     <CollectionView ItemsSource="{Binding MediaList}" SelectionMode="None">
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Frame Margin="10" Padding="10" BackgroundColor="#FFFFFF" CornerRadius="10">
+                <Frame Margin="10" Padding="10" BackgroundColor="Black" CornerRadius="10">
                     <StackLayout>
-                        <Image Source="{Binding PosterPath}" HeightRequest="150" Aspect="AspectFill" />
+                        <!--<Image Source="{Binding PosterPath}" HeightRequest="150" Aspect="AspectFill" />-->
+                        <Image Source="{Binding PosterPath}" HeightRequest="300" WidthRequest="300" Aspect="AspectFit" />
+
                         <Label Text="{Binding Title}" FontSize="20" FontAttributes="Bold" />
                         <Label Text="{Binding Genre}" FontSize="16" TextColor="Gray" />
+                        
                         <Label Text="{Binding Rating, StringFormat='Rating: {0:F1}'}" FontSize="14" />
+                        
+                        <!--
                         <Label Text="{Binding Tags, StringFormat='Tags: {0}'}" FontSize="14" />
+                        -->
+
+                        <Button Text="Bookmark" Clicked="BookmarkMedia_Clicked" />
+
                     </StackLayout>
                 </Frame>
             </DataTemplate>
